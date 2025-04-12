@@ -1,18 +1,29 @@
 #!/usr/bin/env ruby
 require "fileutils"
 
-# Vérifie que les processus ne sont pas déjà en cours
-def kill_process_on_port(port)
-  system("powershell -Command \"Get-NetTCPConnection -LocalPort #{port} -ErrorAction SilentlyContinue | ForEach-Object { Stop-Process -Id $_.OwningProcess -Force }\"")
+# Nettoie les processus et fichiers existants
+def cleanup
+  # Supprime le fichier PID s'il existe
+  pid_file = "tmp/pids/server.pid"
+  File.delete(pid_file) if File.exist?(pid_file)
+  
+  # Arrête les processus sur le port 3000
+  system("powershell -Command \"Get-NetTCPConnection -LocalPort 3000 -ErrorAction SilentlyContinue | ForEach-Object { Stop-Process -Id $_.OwningProcess -Force }\"")
 end
 
-# Arrête les processus existants sur le port 3000
-kill_process_on_port(3000)
+# Effectue le nettoyage
+cleanup
 
-# Lance le serveur Rails et Tailwind en parallèle
+puts "🚀 Démarrage du serveur Rails..."
 if Gem.win_platform?
-  system("start cmd /c rails server") # Lance le serveur Rails
-  system("start cmd /c rails tailwindcss:watch") # Lance Tailwind
+  # Démarre le serveur Rails dans une nouvelle fenêtre
+  system("start cmd /k rails server")
+  
+  puts "🎨 Démarrage de Tailwind CSS..."
+  # Démarre Tailwind dans une nouvelle fenêtre
+  system("start cmd /k rails tailwindcss:watch")
 else
   system("foreman start -f Procfile.dev")
 end
+
+puts "\n✨ Serveur démarré ! Accédez à votre application sur http://localhost:3000"

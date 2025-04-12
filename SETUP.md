@@ -60,3 +60,9 @@ node -v        # Devrait afficher v20.x.x ou plus récent
 yarn -v        # Devrait afficher 1.22.x ou plus récent
 psql --version # Devrait afficher PostgreSQL 16.x ou plus récent
 ```
+
+Lancez les serveurs avec : 
+
+```bash
+cd /e/Logiciel/Laragon/laragon/www/kinship-clone-rails && ruby bin/dev
+```
