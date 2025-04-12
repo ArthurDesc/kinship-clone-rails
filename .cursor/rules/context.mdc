@@ -1,0 +1,9 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+
+
+
+J'ai dans quelques jours un entretien pour une entreprise qui cherche un alternant pour continuer le developpement d'un site web en ruby on rails. Etant donné que l'école ne nous apprend pas ce language l'employeur cherche donc quelqu'un de determiné a apprendre la langage ruby d'ici octobre. Je veux donc mettre en place un site web pour tester le langage mais également pour le présenter pour lundi, le but du site est de mettre en place une fonctionnalitée je veux mettre en place une fonctionnalitée robuste qui doit être complémentaire et cohérente au site déjà existant. En terme de design, ça doit être similaire à celui du site du client https://www.kinshipedu.fr/ [planche-design-kinship.png](mdc:img/planche-design-kinship.png)

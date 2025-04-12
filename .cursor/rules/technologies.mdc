@@ -1,0 +1,9 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+Voici les technologies à utiliser : 
+- Ruby on rails
+- PostgreSQL
+- Tailwind CSS

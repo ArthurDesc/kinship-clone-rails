@@ -1,0 +1,18 @@
+#!/usr/bin/env ruby
+require "fileutils"
+
+# Vérifie que les processus ne sont pas déjà en cours
+def kill_process_on_port(port)
+  system("powershell -Command \"Get-NetTCPConnection -LocalPort #{port} -ErrorAction SilentlyContinue | ForEach-Object { Stop-Process -Id $_.OwningProcess -Force }\"")
+end
+
+# Arrête les processus existants sur le port 3000
+kill_process_on_port(3000)
+
+# Lance le serveur Rails et Tailwind en parallèle
+if Gem.win_platform?
+  system("start cmd /c rails server") # Lance le serveur Rails
+  system("start cmd /c rails tailwindcss:watch") # Lance Tailwind
+else
+  system("foreman start -f Procfile.dev")
+end
