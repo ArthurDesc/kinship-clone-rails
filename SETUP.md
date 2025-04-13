@@ -66,3 +66,12 @@ Lancez les serveurs avec :
 ```bash
 cd /e/Logiciel/Laragon/laragon/www/kinship-clone-rails && ruby bin/dev
 ```
+
+Ou avec : 
+
+```bash
+cd /e/Logiciel/Laragon/laragon/www/kinship-clone-rails && rails server
+
+
+cd /e/Logiciel/Laragon/laragon/www/kinship-clone-rails && rails tailwindcss:watch
+```
